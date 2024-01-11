@@ -84,11 +84,18 @@ public class Main {
         return "ca marche pas";
     }
 
-    public static void carresParfaits(double nombre){
-        for (double i=1; i<=nombre; i++){
-            System.out.println(i*i);
+
+    public static void carresParfaits(int n) {
+        int somme = 0;
+        int nombreImpair = 1;
+
+        for (int i = 1; i <= n; i++) {
+            somme += nombreImpair;
+            System.out.println("Carré parfait jusqu'à " + i + " : " + somme);
+            nombreImpair += 2;
         }
     }
+
 
     public static void main(String[] args) {
         /*
@@ -112,6 +119,6 @@ public class Main {
         //System.out.println(authetification("couscous" ,"camembert"));
         //System.out.println(parc(10,18));
         //System.out.println(categorie(8));
-        carresParfaits(10);
+        //carresParfaits(5);
     }
 }
