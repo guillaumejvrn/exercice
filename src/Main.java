@@ -1,4 +1,5 @@
 import java.io.PrintStream;
+import java.security.PublicKey;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -95,7 +96,54 @@ public class Main {
             nombreImpair += 2;
         }
     }
+    public static void multiplications(double nombre){
+        for (double i=1; i<=10; i++){
+            System.out.println(i*nombre);
+        }
+    }
+    public static long factorielle(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Le nombre doit être positif.");
+        }
+        if (n == 0) {
+            return 1;
+        }
+        long resultat = 1;
+        for (int i = 1; i <= n; i++) {
+            resultat *= i;
+        }
+        return resultat;
+    }
 
+    public static boolean estPremier(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static String civilite() {
+        Scanner scanner = new Scanner(System.in);
+        String reponse;
+
+        do {
+            System.out.print("Êtes-vous un homme (H) ou une femme (F) ? ");
+            reponse = scanner.nextLine().toUpperCase();  // Convertir la réponse en majuscules
+
+            if (!reponse.equals("H") && !reponse.equals("F")) {
+                System.out.println("Veuillez entrer une réponse valide (H ou F).");
+            }
+
+        } while (!reponse.equals("H") && !reponse.equals("F"));
+
+        scanner.close();
+        return reponse;
+    }
 
     public static void main(String[] args) {
         /*
@@ -120,5 +168,19 @@ public class Main {
         //System.out.println(parc(10,18));
         //System.out.println(categorie(8));
         //carresParfaits(5);
+        //multiplications(9);
+
+        /*
+        int nombre = 5;
+        long resultatFactorielle = factorielle(nombre);
+        System.out.println("La factorielle de " + nombre + " est : " + resultatFactorielle);
+        */
+        /*
+        int nombre = 13;
+        boolean estPremier = estPremier(nombre);
+        System.out.println("Le nombre " + nombre + " est premier : " + estPremier);
+        */
+        String resultat = civilite();
+        System.out.println("Vous avez répondu : " + resultat);
     }
 }
