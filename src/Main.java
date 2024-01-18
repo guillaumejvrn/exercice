@@ -1,6 +1,7 @@
 import java.io.PrintStream;
 import java.security.PublicKey;
 import java.util.Scanner;
+import java.util.Random;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -145,6 +146,52 @@ public class Main {
         return reponse;
     }
 
+    public static void deviner (){
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        double tours = 0;
+        double victoire = 0;
+        int valeurAleatoire = random.nextInt(1, 1001);
+        while(victoire == 0) {
+            System.out.println("enter un nombre entre 1 et 1000");
+            double valeurDuJoueur = Double.parseDouble(scanner.nextLine());
+            if(valeurDuJoueur == valeurAleatoire){
+                System.out.println("bravo vous avez gagné en "+tours+" tours");
+                break;
+            }else if (valeurDuJoueur < valeurAleatoire){
+                System.out.println("trop petit");
+            }else {
+                System.out.println("trop grand");
+            }
+            tours++;
+        }
+    }
+
+    public static void inverser(int[] tableau) {
+        int debut = 0;
+        int fin = tableau.length - 1;
+        while (debut < fin) {
+            int temp = tableau[debut];
+            tableau[debut] = tableau[fin];
+            tableau[fin] = temp;
+            debut++;
+            fin--;
+        }
+    }
+
+    public static boolean egaux(int[] tableau, int[]tableEau){
+        if(tableau.length == tableEau.length){
+            for(int i = 0;i<tableEau.length ;i++){
+                if(tableau[i]!=tableEau[i]){
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+
     public static void main(String[] args) {
         /*
         System.out.println("hello world");
@@ -184,6 +231,21 @@ public class Main {
         String resultat = civilite();
         System.out.println("Vous avez répondu : " + resultat);
          */
+        //deviner();
+
+        /*
+        int[] tableau = {1, 2, 3, 4, 5};
+        inverser(tableau);
+        for (int element : tableau) {
+            System.out.print(element + " ");
+        }
+         */
+        /*
+        int[] tableau = {1,2,3,4};
+        int[] tableEau = {1,2,5,4};
+        System.out.println(egaux(tableau, tableEau));
+        */
+
 
     }
 }
