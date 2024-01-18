@@ -247,6 +247,27 @@ public class Main {
                 (base1 == 'c' && base2 == 'g');
     }
 
+    public static boolean estBissextile(int annee) {
+        return (annee % 4 == 0 && annee % 100 != 0) || (annee % 400 == 0 && annee % 4000 != 0);
+    }
+
+    public static String jourMois(int jourDansAnnee, int annee) {
+        boolean estBissextile = estBissextile(annee);
+        int[] joursDansMoisNonBissextile = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] joursDansMoisBissextile = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int[] joursDansMois = estBissextile ? joursDansMoisBissextile : joursDansMoisNonBissextile;
+        if (jourDansAnnee < 1 || jourDansAnnee > 365 + (estBissextile ? 1 : 0)) {
+            return "Numéro de jour invalide";
+        }
+        int mois = 0;
+        int joursRestants = jourDansAnnee;
+        while (joursRestants > joursDansMois[mois]) {
+            joursRestants -= joursDansMois[mois];
+            mois++;
+        }
+        return String.format("%02d/%02d", joursRestants, mois + 1);
+    }
+
     public static void main(String[] args) {
         /*
         System.out.println("hello world");
@@ -318,10 +339,25 @@ public class Main {
         int[] coeff = {1, 2};
         System.out.println(moyenne(notes, coeff));
          */
+        /*
         char[] adn1 = {'a', 'a', 't', 'g', 'g', 'c'};
         char[] adn2 = {'c', 't', 'a', 'c', 'a', 'g'};
         double taux = taux_concordance(adn1, adn2);
         System.out.println("Le taux de concordance est : " + taux + "%");
+         */
+        /*
+        int annee = 2024;
+        boolean estBissextile = estBissextile(annee);
+        if (estBissextile) {
+            System.out.println("L'année " + annee + " est bissextile.");
+        } else {
+            System.out.println("L'année " + annee + " n'est pas bissextile.");
+        }
+         */
+
+        int jourDansAnnee = 32;
+        int annee = 2023;
+        System.out.println(jourMois(jourDansAnnee, annee));
 
     }
 }
