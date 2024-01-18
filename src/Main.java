@@ -228,6 +228,25 @@ public class Main {
         return somme/sommeCoeff;
     }
 
+    public static double taux_concordance(char[] adn1, char[] adn2) {
+        if (adn1.length != adn2.length) {
+            throw new IllegalArgumentException("Les deux brins d'ADN doivent avoir la même taille.");
+        }
+        int basesAppariees = 0;
+        for (int i = 0; i < adn1.length; i++) {
+            if (sontBasesAppariees(adn1[i], adn2[i])) {
+                basesAppariees++;
+            }
+        }
+        return (double) basesAppariees / adn1.length * 100;
+    }
+    public static boolean sontBasesAppariees(char base1, char base2) {
+        return (base1 == 'a' && base2 == 't') ||
+                (base1 == 't' && base2 == 'a') ||
+                (base1 == 'g' && base2 == 'c') ||
+                (base1 == 'c' && base2 == 'g');
+    }
+
     public static void main(String[] args) {
         /*
         System.out.println("hello world");
@@ -299,7 +318,10 @@ public class Main {
         int[] coeff = {1, 2};
         System.out.println(moyenne(notes, coeff));
          */
-
+        char[] adn1 = {'a', 'a', 't', 'g', 'g', 'c'};
+        char[] adn2 = {'c', 't', 'a', 'c', 'a', 'g'};
+        double taux = taux_concordance(adn1, adn2);
+        System.out.println("Le taux de concordance est : " + taux + "%");
 
     }
 }
