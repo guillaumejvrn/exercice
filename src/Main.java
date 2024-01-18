@@ -6,11 +6,12 @@ import java.util.Random;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static double fahrenheit(double C){
-        double F = 9*C / 5 + 32;
+    public static double fahrenheit(double C) {
+        double F = 9 * C / 5 + 32;
         return F;
     }
-    public static void age () {
+
+    public static void age() {
         PrintStream output = new PrintStream(System.out);
         Scanner input = new Scanner(System.in);
         double anneDeNaissance;
@@ -27,60 +28,60 @@ public class Main {
         System.out.println("quel est on annee dans laquel tu veux savoir ton age");
         annee = Double.parseDouble(input.nextLine());
 
-        output.println(prenom+" "+nom+" "+(annee - anneDeNaissance)+" ans en "+annee);
+        output.println(prenom + " " + nom + " " + (annee - anneDeNaissance) + " ans en " + annee);
     }
 
-    public static double perimetre(double longeur, double largeur){
-        return longeur*2+longeur*2;
+    public static double perimetre(double longeur, double largeur) {
+        return longeur * 2 + longeur * 2;
     }
 
-    public static double aire(double longeur, double largeur){
-        return longeur*largeur;
+    public static double aire(double longeur, double largeur) {
+        return longeur * largeur;
     }
 
-    public static boolean estPair(double nombre){
-        return nombre%2==0;
+    public static boolean estPair(double nombre) {
+        return nombre % 2 == 0;
 
     }
 
-    public static boolean authetification(String identifiant, String motDePasse){
+    public static boolean authetification(String identifiant, String motDePasse) {
         return "couscous" == identifiant && "camembert" == motDePasse;
     }
 
-    public static double parc(double age, double heure){
+    public static double parc(double age, double heure) {
         double heureDeFermeture = 19;
         double prix;
-        if(age < 5){
+        if (age < 5) {
             return 0;
         } else {
-            prix = 6 + 2*(heureDeFermeture-heure);
-            if(prix>=18){
+            prix = 6 + 2 * (heureDeFermeture - heure);
+            if (prix >= 18) {
                 return 18;
             }
         }
         return prix;
     }
 
-    public static String categorie(double age){
-        if(age<8){
+    public static String categorie(double age) {
+        if (age < 8) {
             return "petit poussin";
-        } else if(8==age || 9==age){
+        } else if (8 == age || 9 == age) {
             return "poussins";
-        } else if(10==age || 11==age){
+        } else if (10 == age || 11 == age) {
             return "pupilles";
-        } else if(12==age || 13==age){
+        } else if (12 == age || 13 == age) {
             return "benjamins";
-        } else if(14==age || 15==age){
+        } else if (14 == age || 15 == age) {
             return "minimes";
-        } else if(16==age || 17==age){
+        } else if (16 == age || 17 == age) {
             return "cadets";
-        } else if (18==age || 19==age){
+        } else if (18 == age || 19 == age) {
             return "juniors";
-        } else if (age>=20 && age<=49){
+        } else if (age >= 20 && age <= 49) {
             return "seniors";
-        } else if (age>=50 && age<=64){
+        } else if (age >= 50 && age <= 64) {
             return "seniors+";
-        } else if (age>=65){
+        } else if (age >= 65) {
             return "veterans";
         }
         return "ca marche pas";
@@ -97,11 +98,13 @@ public class Main {
             nombreImpair += 2;
         }
     }
-    public static void multiplications(double nombre){
-        for (double i=1; i<=10; i++){
-            System.out.println(i*nombre);
+
+    public static void multiplications(double nombre) {
+        for (double i = 1; i <= 10; i++) {
+            System.out.println(i * nombre);
         }
     }
+
     public static long factorielle(int n) {
         if (n < 0) {
             throw new IllegalArgumentException("Le nombre doit être positif.");
@@ -146,21 +149,21 @@ public class Main {
         return reponse;
     }
 
-    public static void deviner (){
+    public static void deviner() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
         double tours = 0;
         double victoire = 0;
         int valeurAleatoire = random.nextInt(1, 1001);
-        while(victoire == 0) {
+        while (victoire == 0) {
             System.out.println("enter un nombre entre 1 et 1000");
             double valeurDuJoueur = Double.parseDouble(scanner.nextLine());
-            if(valeurDuJoueur == valeurAleatoire){
-                System.out.println("bravo vous avez gagné en "+tours+" tours");
+            if (valeurDuJoueur == valeurAleatoire) {
+                System.out.println("bravo vous avez gagné en " + tours + " tours");
                 break;
-            }else if (valeurDuJoueur < valeurAleatoire){
+            } else if (valeurDuJoueur < valeurAleatoire) {
                 System.out.println("trop petit");
-            }else {
+            } else {
                 System.out.println("trop grand");
             }
             tours++;
@@ -179,10 +182,10 @@ public class Main {
         }
     }
 
-    public static boolean egaux(int[] tableau, int[]tableEau){
-        if(tableau.length == tableEau.length){
-            for(int i = 0;i<tableEau.length ;i++){
-                if(tableau[i]!=tableEau[i]){
+    public static boolean egaux(int[] tableau, int[] tableEau) {
+        if (tableau.length == tableEau.length) {
+            for (int i = 0; i < tableEau.length; i++) {
+                if (tableau[i] != tableEau[i]) {
                     return false;
                 }
             }
@@ -191,6 +194,39 @@ public class Main {
         return false;
     }
 
+    public static boolean carreMagique(int[][] tableau) {
+        for (int i = 0; i < tableau.length; i++) {
+            int sommeLigne = 0;
+            int sommeColonne = 0;
+
+            for (int j = 0; j < tableau[i].length; j++) {
+                sommeLigne += tableau[i][j];
+                sommeColonne += tableau[j][i];
+            }
+
+            if (sommeLigne != sommeColonne) {
+                return false;
+            }
+        }
+        int sommeDiagonalePrincipale = 0;
+        for (int i = 0; i < tableau.length; i++) {
+            sommeDiagonalePrincipale += tableau[i][i];
+        }
+        int sommeAntiDiagonale = 0;
+        for (int i = 0; i < tableau.length; i++) {
+            sommeAntiDiagonale += tableau[i][tableau.length - 1 - i];
+        }
+        return sommeDiagonalePrincipale == sommeAntiDiagonale;
+    }
+    public static double moyenne(int[]notes, int[]coeff){
+        double somme = 0;
+        double sommeCoeff = 0;
+        for(int i = 0; i<notes.length; i++){
+            somme = somme+notes[i]*coeff[i];
+            sommeCoeff = sommeCoeff+coeff[i];
+        }
+        return somme/sommeCoeff;
+    }
 
     public static void main(String[] args) {
         /*
@@ -245,6 +281,24 @@ public class Main {
         int[] tableEau = {1,2,5,4};
         System.out.println(egaux(tableau, tableEau));
         */
+        /*
+        int[][] carre = {
+                {2, 7, 6},
+                {9, 5, 1},
+                {4, 3, 8}
+        };
+        boolean estCarreMagique = carreMagique(carre);
+        if (estCarreMagique) {
+            System.out.println("Le tableau est un carré magique.");
+        } else {
+            System.out.println("Le tableau n'est pas un carré magique.");
+        }
+         */
+        /*
+        int[] notes = {10, 15};
+        int[] coeff = {1, 2};
+        System.out.println(moyenne(notes, coeff));
+         */
 
 
     }
