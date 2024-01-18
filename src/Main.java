@@ -180,7 +180,10 @@ public class Main {
         boolean estPremier = estPremier(nombre);
         System.out.println("Le nombre " + nombre + " est premier : " + estPremier);
         */
+        /*
         String resultat = civilite();
         System.out.println("Vous avez répondu : " + resultat);
+         */
+
     }
 }
